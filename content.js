@@ -55,7 +55,7 @@
             position: fixed;
             bottom: 130px;
             right: 70px;
-            width: 340px;
+            width: 320px;
             max-height: 80vh;
             background: rgba(30, 30, 30, 0.98);
             backdrop-filter: blur(20px);
@@ -83,7 +83,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px;
+            padding: 14px 16px;
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -129,23 +129,23 @@
         }
         
         .panel-body {
-            padding: 16px;
+            padding: 14px;
             overflow-y: auto;
             flex: 1;
         }
         
         .song-info-card {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 16px;
+            border-radius: 10px;
+            padding: 10px 12px;
+            margin-bottom: 12px;
         }
         
         .song-info-row {
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         
         .song-info-row:last-child {
@@ -155,118 +155,91 @@
         .song-info-label {
             color: rgba(255, 255, 255, 0.5);
             font-size: 12px;
-            min-width: 40px;
+            min-width: 36px;
         }
         
         .song-info-value {
             color: rgba(255, 255, 255, 0.9);
-            font-size: 14px;
+            font-size: 13px;
             flex: 1;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
         
-        .options-section {
-            margin-bottom: 16px;
-        }
-        
-        .option-item {
+        .options-row {
             display: flex;
-            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .option-btn {
+            flex: 1;
+            display: flex;
             align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .option-item:last-child {
-            border-bottom: none;
-        }
-        
-        .option-label {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 13px;
-        }
-        
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 40px;
-            height: 22px;
-        }
-        
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        
-        .slider {
-            position: absolute;
+            justify-content: center;
+            gap: 5px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
             cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(255, 255, 255, 0.2);
-            transition: 0.3s;
-            border-radius: 22px;
+            transition: all 0.2s;
         }
         
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            left: 3px;
-            bottom: 3px;
-            background-color: white;
-            transition: 0.3s;
-            border-radius: 50%;
+        .option-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
         
-        input:checked + .slider {
-            background-color: #667eea;
+        .option-btn.active {
+            background: rgba(102, 126, 234, 0.3);
+            border-color: rgba(102, 126, 234, 0.5);
+            color: #fff;
         }
         
-        input:checked + .slider:before {
-            transform: translateX(18px);
+        .option-btn svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
         }
         
         .lyrics-preview {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 16px;
-            max-height: 150px;
+            padding: 10px;
+            margin-bottom: 12px;
+            max-height: 120px;
             overflow-y: auto;
         }
         
         .lyrics-preview-title {
             color: rgba(255, 255, 255, 0.5);
             font-size: 11px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         
         .lyrics-preview-content {
             color: rgba(255, 255, 255, 0.8);
-            font-size: 13px;
-            line-height: 1.6;
+            font-size: 12px;
+            line-height: 1.5;
             white-space: pre-wrap;
         }
         
         .lyrics-preview-empty {
             color: rgba(255, 255, 255, 0.4);
-            font-size: 13px;
+            font-size: 12px;
             text-align: center;
-            padding: 20px;
+            padding: 15px;
         }
         
         .action-buttons {
             display: flex;
-            gap: 10px;
+            gap: 8px;
+            margin-bottom: 8px;
         }
         
         .action-btn {
@@ -274,19 +247,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            padding: 12px 16px;
-            border-radius: 10px;
+            gap: 5px;
+            padding: 10px 12px;
+            border-radius: 8px;
             border: none;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s;
         }
         
         .action-btn svg {
-            width: 16px;
-            height: 16px;
+            width: 15px;
+            height: 15px;
             fill: currentColor;
         }
         
@@ -296,8 +269,8 @@
         }
         
         .action-btn.primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
         
         .action-btn.secondary {
@@ -328,10 +301,10 @@
         
         .status-message {
             text-align: center;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 13px;
-            margin-top: 12px;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-top: 8px;
         }
         
         .status-message.success {
@@ -355,11 +328,11 @@
         }
         
         .tip-text {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 11px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 10px;
             text-align: center;
-            margin-top: 12px;
-            line-height: 1.5;
+            margin-top: 8px;
+            line-height: 1.4;
         }
     `;
     
@@ -426,21 +399,19 @@
                     </div>
                 </div>
                 
-                <div class="options-section">
-                    <div class="option-item">
-                        <span class="option-label">包含时间戳</span>
-                        <label class="switch">
-                            <input type="checkbox" id="option-timestamp">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                    <div class="option-item">
-                        <span class="option-label">包含翻译歌词</span>
-                        <label class="switch">
-                            <input type="checkbox" id="option-translation" checked>
-                            <span class="slider"></span>
-                        </label>
-                    </div>
+                <div class="options-row">
+                    <button class="option-btn" id="btn-timestamp" title="包含时间戳">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                        </svg>
+                        时间戳
+                    </button>
+                    <button class="option-btn active" id="btn-translation" title="包含翻译">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
+                        </svg>
+                        翻译
+                    </button>
                 </div>
                 
                 <div class="lyrics-preview" id="lyrics-preview">
@@ -453,7 +424,7 @@
                         <svg viewBox="0 0 24 24">
                             <path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>
                         </svg>
-                        加载歌词
+                        加载
                     </button>
                     <button class="action-btn secondary" id="refresh-btn">
                         <svg viewBox="0 0 24 24">
@@ -463,7 +434,7 @@
                     </button>
                 </div>
                 
-                <div class="action-buttons" style="margin-top: 10px;">
+                <div class="action-buttons">
                     <button class="action-btn primary" id="download-btn" disabled>
                         <svg viewBox="0 0 24 24">
                             <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
@@ -475,7 +446,7 @@
                 <div class="status-message" id="status-message" style="display: none;"></div>
                 
                 <div class="tip-text">
-                    提示：如果歌词加载失败，请先点击底部播放栏展开歌词页面
+                    提示：如歌词加载失败，请先点击底部播放栏展开歌词页面
                 </div>
             </div>
         `;
@@ -492,22 +463,24 @@
         const loadBtn = shadowRef.getElementById('load-btn');
         const refreshBtn = shadowRef.getElementById('refresh-btn');
         const downloadBtn = shadowRef.getElementById('download-btn');
-        const timestampOption = shadowRef.getElementById('option-timestamp');
-        const translationOption = shadowRef.getElementById('option-translation');
+        const btnTimestamp = shadowRef.getElementById('btn-timestamp');
+        const btnTranslation = shadowRef.getElementById('btn-translation');
         
         closeBtn.addEventListener('click', () => togglePanel(false));
         loadBtn.addEventListener('click', loadLyrics);
         refreshBtn.addEventListener('click', refreshLyrics);
         downloadBtn.addEventListener('click', downloadLyrics);
         
-        timestampOption.addEventListener('change', (e) => {
-            currentSettings.includeTimestamp = e.target.checked;
+        btnTimestamp.addEventListener('click', () => {
+            currentSettings.includeTimestamp = !currentSettings.includeTimestamp;
+            btnTimestamp.classList.toggle('active', currentSettings.includeTimestamp);
             saveSettings();
             updateLyricsPreview();
         });
         
-        translationOption.addEventListener('change', (e) => {
-            currentSettings.includeTranslation = e.target.checked;
+        btnTranslation.addEventListener('click', () => {
+            currentSettings.includeTranslation = !currentSettings.includeTranslation;
+            btnTranslation.classList.toggle('active', currentSettings.includeTranslation);
             saveSettings();
             updateLyricsPreview();
         });
@@ -531,11 +504,11 @@
             if (response && response.success && response.settings) {
                 currentSettings = { ...currentSettings, ...response.settings };
                 
-                const timestampOption = shadowRef.getElementById('option-timestamp');
-                const translationOption = shadowRef.getElementById('option-translation');
+                const btnTimestamp = shadowRef.getElementById('btn-timestamp');
+                const btnTranslation = shadowRef.getElementById('btn-translation');
                 
-                if (timestampOption) timestampOption.checked = currentSettings.includeTimestamp;
-                if (translationOption) translationOption.checked = currentSettings.includeTranslation;
+                if (btnTimestamp) btnTimestamp.classList.toggle('active', currentSettings.includeTimestamp);
+                if (btnTranslation) btnTranslation.classList.toggle('active', currentSettings.includeTranslation);
             }
         } catch (error) {
             console.error('[LyricsExtractor-Content] Failed to load settings:', error);
@@ -590,25 +563,43 @@
         const downloadBtn = shadowRef.getElementById('download-btn');
         
         if (!currentLyrics || currentLyrics.length === 0) {
-            previewContent.innerHTML = '<div class="lyrics-preview-empty">暂无歌词\n点击"加载歌词"按钮尝试获取</div>';
+            previewContent.innerHTML = '<div class="lyrics-preview-empty">暂无歌词\n点击"加载"按钮尝试获取</div>';
             downloadBtn.disabled = true;
             return;
         }
         
         downloadBtn.disabled = false;
         
-        const previewLines = currentLyrics.slice(0, 5);
+        const previewLines = currentLyrics.slice(0, 4);
         let previewText = '';
         
         previewLines.forEach(line => {
-            if (line.text) {
-                previewText += line.text + '\n';
-            } else if (line.characters) {
-                previewText += line.characters.map(c => c.char).join('') + '\n';
+            let lineText = '';
+            let startTime = null;
+            
+            if (line.characters && line.characters.length > 0) {
+                lineText = line.characters.map(c => c.char).join('');
+                startTime = line.characters[0].startTime;
+            } else if (line.text) {
+                lineText = line.text;
+                startTime = line.startTime;
+            }
+            
+            if (currentSettings.includeTimestamp && startTime !== null && startTime !== undefined) {
+                const mins = Math.floor(startTime / 60000);
+                const secs = Math.floor((startTime % 60000) / 1000);
+                const ms = Math.floor((startTime % 1000) / 10);
+                previewText += `[${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}.${ms.toString().padStart(2, '0')}]`;
+            }
+            
+            previewText += lineText + '\n';
+            
+            if (currentSettings.includeTranslation && line.translated) {
+                previewText += line.translated + '\n';
             }
         });
         
-        if (currentLyrics.length > 5) {
+        if (currentLyrics.length > 4) {
             previewText += '...';
         }
         
@@ -673,7 +664,7 @@
                 updateLyricsPreview();
                 
                 if (!data || data.length === 0) {
-                    showStatus('暂无歌词，请点击"加载歌词"按钮', 'warning');
+                    showStatus('暂无歌词，请点击"加载"按钮', 'warning');
                 } else {
                     showStatus(`已获取 ${data.length} 行歌词`, 'success');
                 }

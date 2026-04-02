@@ -20,8 +20,6 @@
     };
     
     let vueApp = null;
-    let lyricsDataRef = null;
-    let showLyricsRef = null;
     
     function initVueObserver() {
         const checkVueApp = () => {
@@ -29,8 +27,6 @@
             if (app && app.__vue_app__) {
                 vueApp = app.__vue_app__;
                 console.log('[LyricsExtractor-Main] Vue app found');
-                
-                tryAccessVueStore();
                 return true;
             }
             return false;
@@ -38,22 +34,6 @@
         
         if (!checkVueApp()) {
             setTimeout(initVueObserver, 1000);
-        }
-    }
-    
-    function tryAccessVueStore() {
-        if (!vueApp) return;
-        
-        try {
-            const pinia = vueApp.config.globalProperties.$pinia;
-            if (!pinia) {
-                console.log('[LyricsExtractor-Main] Pinia not found, trying alternative method');
-                return;
-            }
-            
-            console.log('[LyricsExtractor-Main] Pinia found, store ready');
-        } catch (error) {
-            console.error('[LyricsExtractor-Main] Error accessing Vue store:', error);
         }
     }
     
@@ -117,10 +97,6 @@
                 if (component.setupState && component.setupState.lyricsData) {
                     console.log('[LyricsExtractor-Main] Found lyricsData in setupState');
                     return component.setupState.lyricsData;
-                }
-                
-                if (component.ctx && component.ctx.showLyrics !== undefined) {
-                    showLyricsRef = component.ctx.showLyrics;
                 }
                 
                 return null;
@@ -258,6 +234,28 @@
         }
     }
     
+    function formatTime(seconds, includeMs = false) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        
+        if (includeMs) {
+            const ms = Math.floor((seconds % 1) * 100);
+            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}.${ms.toString().padStart(2, '0')}`;
+        }
+        
+        return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+    
+    function getLineStartTime(line) {
+        if (line.characters && line.characters.length > 0) {
+            return line.characters[0].startTime;
+        }
+        if (line.startTime !== undefined) {
+            return line.startTime;
+        }
+        return null;
+    }
+    
     function formatLyricsText(lyrics, settings = {}) {
         if (!lyrics || lyrics.length === 0) {
             return '';
@@ -275,16 +273,19 @@
         
         lyrics.forEach((line, index) => {
             let lineText = '';
+            let startTime = null;
             
             if (line.characters && line.characters.length > 0) {
                 lineText = line.characters.map(c => c.char).join('');
+                startTime = line.characters[0].startTime;
             } else if (line.text) {
                 lineText = line.text;
+                startTime = line.startTime;
             }
             
-            if (settings.includeTimestamp && line.startTime !== undefined) {
-                const startTime = formatTime(line.startTime / 1000);
-                text += `[${startTime}]`;
+            if (settings.includeTimestamp && startTime !== null && startTime !== undefined) {
+                const timeStr = formatTime(startTime / 1000, true);
+                text += `[${timeStr}]`;
             }
             
             text += lineText + '\n';
@@ -293,11 +294,17 @@
             const romanized = line.romanized || '';
             
             if (settings.includeTranslation && translated) {
-                text += '    ' + translated + '\n';
+                if (settings.includeTimestamp && startTime !== null && startTime !== undefined) {
+                    text += '    ';
+                }
+                text += translated + '\n';
             }
             
             if (romanized) {
-                text += '    ' + romanized + '\n';
+                if (settings.includeTimestamp && startTime !== null && startTime !== undefined) {
+                    text += '    ';
+                }
+                text += romanized + '\n';
             }
         });
         
@@ -306,12 +313,6 @@
         text += '提取工具：MoeKoe 歌词提取器插件\n';
         
         return text;
-    }
-    
-    function formatTime(seconds) {
-        const mins = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
     }
     
     function generateFileName() {

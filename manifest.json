@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "歌词提取器",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "提取当前播放歌曲的歌词并保存为TXT文件",
   "plugin_id": "moekoe-lyrics-extractor",
   "minversion": "1.5.0",
