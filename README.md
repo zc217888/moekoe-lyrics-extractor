@@ -9,23 +9,22 @@
 - 💾 **保存为 TXT** - 将歌词保存为文本文件
 - 🌐 **支持翻译** - 可选择是否包含翻译歌词
 - ⏱️ **时间戳支持** - 可选择是否包含时间戳
+- 🔄 **自动加载** - 支持自动触发歌词加载
 
 ## 安装方法
 
-### 方法一：直接安装
+### 方法一：通过插件市场安装（推荐）
 
-1. 将整个 `moekoe-lyrics-extractor` 文件夹复制到 MoeKoeMusic 的插件目录：
+在 MoeKoeMusic 的设置 → 插件管理中搜索"歌词提取器"并安装。
+
+### 方法二：手动安装
+
+1. 将整个插件文件夹复制到 MoeKoeMusic 的插件目录：
    - **Windows**: `%APPDATA%/MoeKoeMusic/extensions/`
    - **macOS**: `~/Library/Application Support/MoeKoeMusic/extensions/`
    - **Linux**: `~/.config/MoeKoeMusic/extensions/`
 
 2. 重启 MoeKoeMusic 应用
-
-### 方法二：打包安装
-
-1. 将 `moekoe-lyrics-extractor` 文件夹打包成 `.zip` 文件
-2. 在 MoeKoeMusic 的插件管理界面点击"安装插件"
-3. 选择打包好的 `.zip` 文件
 
 ## 使用方法
 
@@ -69,50 +68,18 @@
 提取工具：MoeKoe 歌词提取器插件
 ```
 
-## 文件结构
-
-```
-moekoe-lyrics-extractor/
-├── manifest.json     # 插件配置文件
-├── background.js     # 后台服务脚本
-├── content.js        # 内容脚本（UI）
-├── inject.js         # 注入脚本（核心功能）
-├── popup.html        # 弹窗页面
-├── popup.js          # 弹窗脚本
-├── icons/            # 图标资源
-│   ├── icon16.svg
-│   ├── icon48.svg
-│   └── icon128.svg
-└── README.md         # 说明文档
-```
-
 ## 注意事项
 
 - 需要先播放歌曲并加载歌词后才能提取
 - 部分歌曲可能没有歌词或翻译
 - 文件名会自动使用"歌曲名 - 歌手"格式
-
-## 常见问题
-
-### Q: 为什么显示"暂无歌词"？
-
-A: 可能的原因：
-1. 当前歌曲没有播放
-2. 歌词尚未加载完成
-3. 该歌曲确实没有歌词
-
-### Q: 如何获取翻译歌词？
-
-A: 勾选"包含翻译歌词"选项即可。如果歌曲本身没有翻译，则不会显示。
-
-### Q: 歌词文件保存在哪里？
-
-A: 默认保存在浏览器的下载目录中。
+- 如果歌词加载失败，请先点击底部播放栏展开歌词页面
 
 ## 技术支持
 
-如有问题或建议，请访问 [MoeKoeMusic GitHub](https://github.com/iAJue/MoeKoeMusic) 提交 Issue。
+- **问题反馈**: [GitHub Issues](https://github.com/zc217888/moekoe-lyrics-extractor/issues)
+- **MoeKoeMusic**: [官方仓库](https://github.com/iAJue/MoeKoeMusic)
 
 ## 许可证
 
-本项目仅供个人学习研究使用，禁止用于商业及非法用途。
+本项目采用 MIT 许可证，仅供个人学习研究使用。
